@@ -94,11 +94,6 @@
   .result-budget-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.3px;}
   .result-budget-value{font-weight:700;font-size:13px;}
   .result-budget-value.full{color:var(--accent);}
-  .result-budget-value.spent{color:var(--red);}
-  .result-budget-value.remaining{color:var(--accent);}
-  .result-budget-pair{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
-  .result-budget-pair .result-budget-label{text-align:right;}
-  .ledger-attendees{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;font-weight:400;}
   .deep-dive-header{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-16) 0;margin-top:var(--sp-32);border-top:2px solid var(--line);}
   .deep-dive-title{font-family:var(--font-display);font-size:18px;font-weight:800;display:flex;align-items:center;gap:var(--sp-8);}
   .deep-dive-toggle{font-family:var(--font-body);font-size:13px;color:var(--primary);background:none;border:none;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-8) var(--sp-16);border-radius:var(--radius-md);transition:all var(--duration) var(--ease);}
@@ -227,9 +222,6 @@
   .road-circle.current .road-month-num{color:rgba(255,255,255,0.7);}
   .road-circle.past-empty{border-color:var(--faint);opacity:0.5;}
   .road-circle.past-has{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light),var(--shadow-sm);}
-  .road-node[onclick]{transition:transform var(--duration) var(--ease);}
-  .road-node[onclick]:hover{transform:translateY(-3px);}
-  .road-node[onclick] .road-circle{cursor:pointer;}
   .road-circle.future{border-color:var(--line);opacity:0.4;}
   .road-month-abbr{font-family:var(--font-display);font-weight:800;font-size:14px;line-height:1;color:var(--ink);}
   .road-month-num{font-size:10px;font-weight:600;color:var(--muted);margin-top:1px;}
@@ -253,6 +245,33 @@
   .toast{position:fixed;bottom:-60px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:var(--sp-12) var(--sp-24);border-radius:var(--radius-md);font-size:13px;font-weight:600;display:flex;align-items:center;gap:var(--sp-8);z-index:999;transition:bottom var(--duration-slow) var(--ease);}
   .toast.show{bottom:var(--sp-24);}
   .toast svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;}
+  .btn-exit{font-family:var(--font-body);height:40px;padding:0 var(--sp-16);border:1px solid #fca5a5;border-radius:var(--radius-md);background:#fff5f5;color:#b91c1c;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:var(--sp-4);transition:all var(--duration) var(--ease);}
+  .btn-exit:hover{background:#fee2e2;border-color:var(--red);}
+  .exit-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:#fee2e2;color:#b91c1c;margin-left:6px;}
+  .exit-badge svg{width:10px;height:10px;stroke:#b91c1c;fill:none;stroke-width:2.5;}
+  .exit-tag{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;background:#fef2f2;color:var(--red);}
+  .exit-summary{margin-top:var(--sp-8);padding:var(--sp-12) var(--sp-16);background:#fff5f5;border:1px solid #fca5a5;border-radius:var(--radius-md);display:flex;flex-wrap:wrap;gap:var(--sp-12);align-items:center;}
+  .exit-summary-label{font-size:12px;color:#b91c1c;font-weight:600;}
+  .exit-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;background:#fee2e2;border-radius:20px;color:#b91c1c;font-weight:600;}
+  .exit-typeahead{position:relative;}
+  .exit-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-md);z-index:10;max-height:200px;overflow-y:auto;margin-top:2px;}
+  .exit-suggestion-item{padding:var(--sp-8) var(--sp-12);font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background var(--duration) var(--ease);}
+  .exit-suggestion-item:hover{background:var(--line-light);}
+  .exit-suggestion-role{font-size:11px;color:var(--muted);}
+  .qv-split{display:flex;flex-direction:column;flex:1;overflow:hidden;}
+  .qv-pane{flex:1;overflow-y:auto;padding:var(--sp-24) var(--sp-32);}
+  .qv-pane.qv-top{background:var(--bg);border-bottom:2px solid var(--line);}
+  .qv-pane.qv-bottom{background:linear-gradient(180deg,var(--bg) 0%,#f0f2f5 100%);}
+  .qv-pane-label{font-family:var(--font-display);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:var(--sp-16);display:flex;align-items:center;gap:var(--sp-8);}
+  .qv-pane-label::before{content:'';width:24px;height:2px;background:currentColor;border-radius:2px;}
+  .del-btn{background:none;border:1px solid #fca5a5;border-radius:var(--radius-sm);color:#b91c1c;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all var(--duration) var(--ease);margin-top:var(--sp-8);}
+  .del-btn:hover{background:#fee2e2;}
+  .del-btn svg{width:12px;height:12px;stroke:#b91c1c;fill:none;stroke-width:2.5;}
+  .att-search-box{display:flex;align-items:center;gap:6px;background:var(--line-light);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;height:36px;margin-bottom:var(--sp-8);}
+  .att-search-box svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0;}
+  .att-search-box input{flex:1;border:none;background:none;font-family:inherit;font-size:13px;outline:none;color:var(--ink);}
+  .att-all-toggle{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--primary);cursor:pointer;padding:4px 8px;border-radius:4px;margin-bottom:var(--sp-4);transition:background var(--duration) var(--ease);}
+  .att-all-toggle:hover{background:var(--primary-subtle);}
   @media(max-width:900px){.wallet-grid{grid-template-columns:1fr;}.calendar-grid{grid-template-columns:repeat(3,1fr);}.kpi-strip{grid-template-columns:repeat(2,1fr);}.breakdown-grid{grid-template-columns:1fr;}.detail-attendees{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:600px){main{padding:var(--sp-16);}.calendar-grid{grid-template-columns:repeat(2,1fr);}.form-row{grid-template-columns:1fr;}}
 </style>
@@ -268,31 +287,51 @@
     <div class="dashboard-controls">
       <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--muted);">BUDGET WALLET</div>
       <div class="header-actions">
-        <button class="btn-accent" id="roadmapBtn" aria-label="Quick view roadmap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Quick View</button>
         <button class="btn-secondary" id="settingsBtn" aria-label="Budget settings"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</button>
+        <button class="btn-accent" id="roadmapBtn" aria-label="Quick view"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Quick View</button>
+        <button class="btn-exit" id="exitBtn" aria-label="Track attrition"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Attrition</button>
         <button class="btn-primary" id="addExpenseBtn" aria-label="Record new expense"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add Expense</button>
       </div>
     </div>
   </header>
   <section class="panel" id="walletPanel" role="region" aria-label="Budget wallet"></section>
-  <div class="deep-dive-header" id="deepDiveHeader">
-    <div class="deep-dive-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>Deep Dive: Spend Metrics</div>
-    <button class="deep-dive-toggle" id="deepDiveToggle" aria-expanded="false"><span id="toggleLabel">Show</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-  </div>
-  <div class="deep-dive-content collapsed" id="deepDiveContent"></div>
+
 </main>
 
-<div class="roadmap-overlay" id="roadmapOverlay">
+<div class="roadmap-overlay" id="quickViewOverlay">
   <div class="roadmap-header">
-    <div><div class="roadmap-title">Event Roadmap FY 2025-26</div><div class="roadmap-subtitle">All planned and completed events across the year</div></div>
-    <button class="btn-secondary" id="closeRoadmap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>Close</button>
+    <div><div class="roadmap-title">Quick View · FY 2025-26</div><div class="roadmap-subtitle">Click any month to view expense details</div></div>
+    <button class="btn-secondary" id="closeQuickView"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>Close</button>
   </div>
-  <div class="roadmap-body" id="roadmapBody"></div>
-  <div class="roadmap-legend">
-    <div class="legend-item"><div class="legend-dot" style="background:var(--primary)"></div>TL Team Connect</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Common / Managerial</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Connectivity</div>
-    <div class="legend-item" style="margin-left:auto;font-weight:600;color:var(--ink);" id="roadmapTotalLabel">Total: ₹0</div>
+  <div class="qv-split">
+    <div class="qv-pane" id="qvDeepDivePane" style="flex:1;">
+      <div class="qv-pane-label">Spend Metrics — click a month to expand</div>
+      <div id="deepDiveBody"></div>
+    </div>
+
+  </div>
+</div>
+
+<div id="exitModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exitModalTitle">
+  <div class="modal-dialog" style="width:min(460px,90vw);">
+    <div class="modal-header"><h2 class="modal-title" id="exitModalTitle">Track Attrition</h2><button class="modal-close" id="closeExitModal">Close</button></div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:var(--sp-16);">Monthly team budget (&#8377;1,000/month) stops after their last working month. Connectivity budget (full $${connUSDPerHead}) remains allocated as a lump sum.</p>
+      <div class="form-group exit-typeahead">
+        <label class="form-label" for="exitNameInput">Colleague Name</label>
+        <input class="form-input" id="exitNameInput" type="text" placeholder="Start typing a name..." autocomplete="off"/>
+        <div class="exit-suggestions" id="exitSuggestions" style="display:none;"></div>
+        <input type="hidden" id="exitNameHidden"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exitDateInput">Last Working Day</label>
+        <input class="form-input" id="exitDateInput" type="date"/>
+        <div class="form-error-msg" id="exitDateErr">Please enter a valid last working day</div>
+      </div>
+      <div id="exitPreview" style="display:none;margin-bottom:var(--sp-16);padding:var(--sp-12) var(--sp-16);background:var(--line-light);border-radius:var(--radius-md);font-size:13px;"></div>
+      <div id="exitCurrentList" style="display:none;margin-bottom:var(--sp-16);"></div>
+      <button class="form-submit" id="exitSubmit" style="background:#b91c1c;">Confirm Attrition</button>
+    </div>
   </div>
 </div>
 
@@ -331,9 +370,9 @@
   <div class="modal-dialog">
     <div class="modal-header"><h2 class="modal-title" id="modalTitle">Record New Expense</h2><button class="modal-close" id="closeModal" aria-label="Close dialog">Close</button></div>
     <div class="modal-body">
-      <div class="form-group"><label class="form-label" for="fDesc">Description</label><input class="form-input" id="fDesc" type="text" placeholder="e.g., Team lunch at Meghana Foods"/><div class="form-error-msg" id="fDescErr">Description is required</div></div>
+      <div class="form-group"><label class="form-label" for="fDesc">Description</label><input class="form-input" id="fDesc" type="text" placeholder="Reason for expense"/><div class="form-error-msg" id="fDescErr">Description is required</div></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label" for="fSource">Budget Source</label><select class="form-select" id="fSource"><option value="team">TL Team Connect (₹1L/TL)</option><option value="common">Common / Managerial</option><option value="connectivity">Connectivity</option></select></div>
+        <div class="form-group"><label class="form-label" for="fSource">Budget Source</label><select class="form-select" id="fSource"><option value="team">Team Events Budget (₹1L/TL)</option><option value="connectivity">Connectivity Budget</option></select></div>
         <div class="form-group"><label class="form-label" for="fTeamLead">Team Lead</label><select class="form-select" id="fTeamLead"></select></div>
       </div>
       <div class="form-row">
@@ -349,7 +388,12 @@
         <label class="form-check"><input type="checkbox" id="fIncludeManager"/> Include Helen Gabriel</label>
         <label class="form-check" style="margin-top:var(--sp-4);"><input type="checkbox" id="fCustomMembers"/> Custom attendee list</label>
       </div>
-      <div class="form-group" id="fCustomSection" style="display:none;"><label class="form-label">Select Attendees</label><div id="fAttendeeList" style="max-height:160px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--sp-8);"></div></div>
+      <div class="form-group" id="fCustomSection" style="display:none;">
+        <label class="form-label">Select Attendees</label>
+        <div class="att-search-box"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="attSearch" type="text" placeholder="Search all colleagues to add..."/></div>
+        <div class="att-all-toggle" id="attAllToggle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Select All / Deselect All</div>
+        <div id="fAttendeeList" style="max-height:200px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--sp-8);"></div>
+      </div>
       <button class="form-submit" id="fSubmit">Record Expense</button>
     </div>
   </div>
@@ -367,9 +411,41 @@ function TEAM_EVENTS_TOTAL(){return TL_TOTAL()+commonBudget;}
 function CONN_PER_HEAD_INR(){return Math.round(connUSDPerHead*exchangeRate);}
 function CONN_TOTAL(){return TOTAL_HC*CONN_PER_HEAD_INR();}
 function GRAND_TOTAL(){return TEAM_EVENTS_TOTAL()+CONN_TOTAL();}
+// ── ATTRITION-ADJUSTED TOTALS ─────────────────────────────────────
+// Team: each exited person loses (12 - activeMonths) × ₹1,000 from the pool
+function attritionTeamDeduction(){return exits.reduce((s,x)=>s+(FY_TOTAL_MONTHS-activeMonths(x.name))*MONTHLY_TEAM_RATE,0);}
+// Connectivity: each exited person loses their full annual allocation
+function attritionConnDeduction(){return exits.length*CONN_PER_HEAD_INR();}
+function TEAM_EVENTS_ADJUSTED(){return TEAM_EVENTS_TOTAL()-attritionTeamDeduction();}
+function CONN_TOTAL_ADJUSTED(){return CONN_TOTAL()-attritionConnDeduction();}
+function GRAND_TOTAL_ADJUSTED(){return TEAM_EVENTS_ADJUSTED()+CONN_TOTAL_ADJUSTED();}
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MONTHS_SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-let expenses=[{description:"Team Lunch · Shibu Unit",teamLead:"Shibu Neelakantan Nair",category:"lunch",amount:20290,month:1,date:"Feb 2026",source:"team",attendees:["Shibu Neelakantan Nair","Akhil G S","Annu Alice George","Brindha A M","Dinkee Das","Dinu Joseph","Durga Madhukumar","Gargi Sharma","Madhan Natarajan","Rohith P","Sourabh Pathania","Vinu Raj N S"],headcount:12,perHead:1690.83},{description:"Team Lunch · Charly Unit",teamLead:"Charly John",category:"lunch",amount:11018,month:1,date:"Feb 2026",source:"team",attendees:["Charly John","Swetha Dilip","Bhumika BH","Dheeraj Singh","Joanna Dsouza","Varshith Raj Manohar Nagappa","Narmadha Veronika T","Adaline Dharshini V","Bhanupriya K","Thulasisharma R"],headcount:10,perHead:1101.80}];let selectedMonth=null;let expandedExpense=null;let deepDiveOpen=false;
+let expenses=[
+  {description:'Team Lunch · Shibu Unit',teamLead:'Shibu Neelakantan Nair',category:'lunch',amount:20290,month:1,date:'Feb 2026',source:'team',
+   attendees:['Shibu Neelakantan Nair','Akhil G S','Annu Alice George','Brindha A M','Dinkee Das','Dinu Joseph','Durga Madhukumar','Gargi Sharma','Madhan Natarajan','Rohith P','Sourabh Pathania','Vinu Raj N S'],
+   headcount:12,perHead:1690.83},
+  {description:'Team Lunch · Charly Unit',teamLead:'Charly John',category:'lunch',amount:11018,month:1,date:'Feb 2026',source:'team',
+   attendees:['Charly John','Adaline Dharshini V','Bhanupriya K','Bhumika BH','Dheeraj Singh','Joanna Dsouza','Narmadha Veronika T','Swetha Dilip','Thulasisharma R','Varshith Raj Manohar Nagappa'],
+   headcount:10,perHead:1101.80}
+];
+let selectedMonth=null;let expandedExpense=null;
+// ── EXIT TRACKING ─────────────────────────────────────────────────
+// exits[]: [{name, lastDay:'YYYY-MM-DD', lastMonth:0-11}]
+let exits=[];
+// FY starts Jan for this calendar view; monthly team budget = ₹1000/head/month
+const MONTHLY_TEAM_RATE=1000;
+const FY_START_MONTH=0; // January = 0
+const FY_TOTAL_MONTHS=12;
+function isExited(name){return exits.some(x=>x.name===name);}
+function exitRecord(name){return exits.find(x=>x.name===name)||null;}
+// Active months in FY for a person (1-12): exited → lastMonth+1, active → 12
+function activeMonths(name){const x=exitRecord(name);return x?Math.min(x.lastMonth-FY_START_MONTH+1,FY_TOTAL_MONTHS):FY_TOTAL_MONTHS;}
+// Prorated team budget for a person
+function personProratedTeamBudget(name){return MONTHLY_TEAM_RATE*activeMonths(name);}
+// Active headcount in a TL unit (BPS only; TL always active)
+function unitActiveCount(tl){const members=[tl,...TEAMS[tl]];return members.filter(n=>!isExited(n)).length;}
+
 function getAllPeople(){const p=[];ALL_BPS.forEach(n=>{const tl=TL_NAMES.find(t=>TEAMS[t].includes(n));p.push({name:n,role:'BPS',teamLead:tl});});TL_NAMES.forEach(t=>p.push({name:t,role:'Team Lead',teamLead:t}));p.push({name:MANAGER,role:'Manager',teamLead:null});return p;}
 const ALL_PEOPLE=getAllPeople();
 function teamSize(tl){return TEAMS[tl].length+1;}
@@ -381,35 +457,37 @@ function commonSpent(){return expenses.filter(e=>e.source==='common').reduce((s,
 function connSpent(){return expenses.filter(e=>e.source==='connectivity').reduce((s,e)=>s+e.amount,0);}
 function totalSpent(src){return expenses.filter(e=>src?e.source===src:true).reduce((s,e)=>s+e.amount,0);}
 function personConnSpent(name){let t=0;expenses.forEach(e=>{if(e.source!=='connectivity')return;if(e.attendees.includes(name))t+=e.perHead;});return t;}
-function personConnBalance(name){return CONN_PER_HEAD_INR()-personConnSpent(name);}
-function personTeamSpent(name){let t=0;expenses.forEach(e=>{if(e.source!=='team')return;if(e.attendees.includes(name))t+=e.perHead;});return Math.round(t);}
+function personConnBalance(name){if(isExited(name))return 0;return CONN_PER_HEAD_INR()-personConnSpent(name);}
 const ICONS={lunch:'<svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',workshop:'<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',outing:'<svg viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',misc:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>'};
 function sourceLabel(s){return{team:'TL Team Connect',common:'Common / Managerial',connectivity:'Connectivity'}[s]||s;}
 function sourceClass(s){return{team:'team',common:'common',connectivity:'conn'}[s]||'team';}
 
 function renderWallet(){
-  const teSpent=totalSpent('team')+totalSpent('common');const teRem=TEAM_EVENTS_TOTAL()-teSpent;const tePct=pct(teSpent,TEAM_EVENTS_TOTAL());
-  const cSpent=connSpent();const cRem=CONN_TOTAL()-cSpent;const cPct=pct(cSpent,CONN_TOTAL());
+  const teAdj=TEAM_EVENTS_ADJUSTED();const cAdj=CONN_TOTAL_ADJUSTED();
+  const teSpent=totalSpent('team')+totalSpent('common');const teRem=teAdj-teSpent;const tePct=pct(teSpent,teAdj);
+  const cSpent=connSpent();const cRem=cAdj-cSpent;const cPct=pct(cSpent,cAdj);
   const tlSp=totalSpent('team');const comSp=commonSpent();
+  const netHC=TOTAL_HC-exits.length;
   const mData=MONTHS.map((_,i)=>monthExpenses(i).reduce((s,e)=>s+e.amount,0));const mMax=Math.max(...mData,1);
-  let h=`<div class="wallet-grid">
+  let h=`<section class="search-section" style="margin-bottom:var(--sp-16);" aria-label="Search team members"><div class="search-field"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="personSearch" type="text" placeholder="Search any colleague — view unit &amp; budget balance..." aria-label="Search team members"/></div><div class="search-results" id="searchResults"></div></section>
+  <div class="wallet-grid">
     <article class="wallet-card team-events"><div>
       <div class="wallet-label">Team Events Budget</div>
       <div class="wallet-amount">${fmt(teRem)}</div>
-      <div class="wallet-meta"><span>${fmt(teSpent)} spent of ${fmt(TEAM_EVENTS_TOTAL())}</span><span class="wallet-badge">${tePct}% used</span></div>
+      <div class="wallet-meta"><span>${fmt(teSpent)} spent of ${fmt(teAdj)}${exits.length>0?" (adj.)":""}</span><span class="wallet-badge">${tePct}% used</span></div>
     </div><div class="wallet-progress"><div class="wallet-progress-fill" style="width:${tePct}%"></div></div>
     <div class="wallet-sub-breakdown">
       <div class="wallet-sub-item"><span class="wallet-sub-label">TL Connects (5 × ${fmt(tlBudgetPerTL)})</span><span class="wallet-sub-value">${fmt(TL_TOTAL()-tlSp)} remaining</span></div>
-      <div class="wallet-sub-item"><span class="wallet-sub-label">Common Pool</span><span class="wallet-sub-value">${fmt(commonBudget-comSp)} remaining</span></div>
+      <div class="wallet-sub-item"><span class="wallet-sub-label">Common Pool</span><span class="wallet-sub-value">${fmt(TEAM_EVENTS_ADJUSTED()-TL_TOTAL()+tlSp)} remaining</span></div>
     </div></article>
     <article class="wallet-card connectivity"><div>
       <div class="wallet-label">Connectivity Budget <span style="opacity:0.5;font-size:10px;text-transform:none;letter-spacing:0;">($${connUSDPerHead}/head × ₹${exchangeRate})</span></div>
       <div class="wallet-amount">${fmt(cRem)}</div>
-      <div class="wallet-meta"><span>${fmt(cSpent)} spent of ${fmt(CONN_TOTAL())}</span><span class="wallet-badge">${cPct}% used</span></div>
+      <div class="wallet-meta"><span>${fmt(cSpent)} spent of ${fmt(cAdj)}${exits.length>0?" (adj.)":""}</span><span class="wallet-badge">${cPct}% used</span></div>
     </div><div class="wallet-progress"><div class="wallet-progress-fill" style="width:${cPct}%"></div></div></article>
   </div>
   <div class="kpi-strip">
-    <div class="kpi-card"><div class="kpi-label">Total Headcount</div><div class="kpi-value">${TOTAL_HC}</div><div class="kpi-sub">${ALL_BPS.length} BPS · ${TL_NAMES.length} TL · 1 TM</div></div>
+    <div class="kpi-card"><div class="kpi-label">Net Headcount</div><div class="kpi-value">${netHC}</div><div class="kpi-sub">${exits.length>0?exits.length+' attrition'+(exits.length>1?'s':''):'No attritions recorded'}</div></div>
     <div class="kpi-card"><div class="kpi-label">Per TL Allocation</div><div class="kpi-value">${fmt(tlBudgetPerTL)}</div><div class="kpi-sub">For team lunches & dinners</div></div>
     <div class="kpi-card"><div class="kpi-label">Events Recorded</div><div class="kpi-value">${expenses.length}</div><div class="kpi-sub">${expenses.filter(e=>e.source==='team').length} TL · ${expenses.filter(e=>e.source==='common').length} common · ${expenses.filter(e=>e.source==='connectivity').length} conn.</div></div>
     <div class="kpi-card"><div class="kpi-label">Monthly Trend</div><div class="micro-chart">${mData.map((v,i)=>'<div class="micro-bar '+(v>0?'has-value':'')+'" style="height:'+Math.max(2,(v/mMax)*28)+'px" title="'+MONTHS_SHORT[i]+': '+fmt(v)+'"></div>').join('')}</div></div>
@@ -417,140 +495,65 @@ function renderWallet(){
   <div class="breakdown-grid">
     <article class="dashboard-card"><div class="section-title"><div class="section-dot" style="background:var(--primary)"></div> TL Team Connect (₹1L each)</div>
     ${TL_NAMES.map(tl=>{const sp=tlSpent(tl);const up=pct(sp,tlBudgetPerTL);const c=up>80?'var(--red)':up>50?'var(--amber)':'var(--primary)';return '<div class="team-row"><span class="team-row-name">'+tl.split(' ')[0]+'</span><span class="team-row-count">'+teamSize(tl)+' pax</span><span class="team-row-amount">'+fmt(tlBudgetPerTL-sp)+'</span><div class="progress-bar"><div class="progress-fill" style="width:'+up+'%;background:'+c+'"></div></div></div>';}).join('')}
-    <div class="team-row" style="border-top:1px solid var(--line);margin-top:var(--sp-8);padding-top:var(--sp-8);"><span class="team-row-name" style="color:var(--amber);font-weight:700">Common Pool</span><span class="team-row-count">All units</span><span class="team-row-amount">${fmt(commonBudget-comSp)}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct(comSp,commonBudget)}%;background:var(--amber)"></div></div></div>
     </article>
     <article class="dashboard-card"><div class="section-title"><div class="section-dot" style="background:var(--accent)"></div> Connectivity by Unit</div>
     ${TL_NAMES.map(tl=>{const m=[tl,...TEAMS[tl]];const b=m.length*CONN_PER_HEAD_INR();const s=m.reduce((x,n)=>x+personConnSpent(n),0);const up=pct(s,b);return '<div class="team-row"><span class="team-row-name">'+tl.split(' ')[0]+'</span><span class="team-row-count">'+m.length+' pax</span><span class="team-row-amount">'+fmt(b-s)+'</span><div class="progress-bar"><div class="progress-fill" style="width:'+up+'%;background:var(--accent)"></div></div></div>';}).join('')}
     <div class="team-row" style="border-top:1px solid var(--line);margin-top:var(--sp-8);padding-top:var(--sp-8);"><span class="team-row-name" style="color:var(--muted)">${MANAGER}</span><span class="team-row-count">1 pax</span><span class="team-row-amount">${fmt(personConnBalance(MANAGER))}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct(personConnSpent(MANAGER),CONN_PER_HEAD_INR())}%;background:var(--accent)"></div></div></div>
     </article>
   </div>
-  <section class="search-section" aria-label="Search team members"><div class="search-field"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="personSearch" type="text" placeholder="Search by name - view unit & connectivity balance..." aria-label="Search team members"/></div><div class="search-results" id="searchResults"></div></section>`;
+`;
+  if(exits.length>0){
+    h+='<div class="exit-summary"><span class="exit-summary-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-linecap="round" style="vertical-align:-2px;margin-right:3px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>'+exits.length+' Exit'+(exits.length>1?'s':'')+' recorded</span>'+exits.map(x=>'<span class="exit-chip">'+x.name.split(' ')[0]+' \u00b7 until '+MONTHS_SHORT[x.lastMonth]+'</span>').join('')+'</div>';
+  }
   return h;
 }
 
 function renderDeepDive(){
   const now=new Date();const curMonth=now.getMonth();
   const amt=MONTHS.map((_,i)=>monthExpenses(i).reduce((s,e)=>s+e.amount,0));const mx=Math.max(...amt,1);
-  let h='<div style="padding-top:var(--sp-16);"><div class="calendar-grid">'+MONTHS.map((m,i)=>{const mE=monthExpenses(i);const t=mE.reduce((s,e)=>s+e.amount,0);const c=mE.length;const iF=i>curMonth;const iS=selectedMonth===i;const hE=t>0;return '<div class="cal-cell card-interactive '+(hE?'has-expense':'')+' '+(iS?'selected':'')+' '+(iF?'future':'')+'" data-month="'+i+'" role="button">'+(hE?'<div class="cal-cell-indicator"></div>':'')+'<div class="cal-month-label">'+MONTHS_SHORT[i]+' 2026</div><div class="cal-amount '+(t===0?'zero':'')+'">'+(t===0?'₹0':fmt(t))+'</div><div class="cal-events">'+(c===0?'No expenses':c+' event'+(c>1?'s':''))+'</div><div class="cal-bar"><div class="cal-bar-fill" style="width:'+pct(t,mx)+'%"></div></div></div>';}).join('')+'</div>';
+  let h='<div class="calendar-grid">'+MONTHS.map((m,i)=>{const mE=monthExpenses(i);const t=mE.reduce((s,e)=>s+e.amount,0);const c=mE.length;const iF=i>curMonth;const iS=selectedMonth===i;const hE=t>0;return '<div class="cal-cell card-interactive '+(hE?'has-expense':'')+' '+(iS?'selected':'')+' '+(iF?'future':'')+'" data-month="'+i+'" role="button">'+(hE?'<div class="cal-cell-indicator"></div>':'')+'<div class="cal-month-label">'+MONTHS_SHORT[i]+' 2026</div><div class="cal-amount '+(t===0?'zero':'')+'">'+(t===0?'₹0':fmt(t))+'</div><div class="cal-events">'+(c===0?'No expenses':c+' event'+(c>1?'s':''))+'</div><div class="cal-bar"><div class="cal-bar-fill" style="width:'+pct(t,mx)+'%"></div></div></div>';}).join('')+'</div>';
   if(selectedMonth!==null){const mE=monthExpenses(selectedMonth);const t=mE.reduce((s,e)=>s+e.amount,0);
     if(mE.length===0){h+='<section class="expense-panel"><div class="dashboard-card"><div class="empty-state"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><path d="M6 16h4"/></svg><p><strong>No expenses in '+MONTHS[selectedMonth]+'</strong></p><p>Use "Add Expense" to record one.</p></div></div></section>';}
-    else{h+='<section class="expense-panel"><div class="dashboard-card"><div class="expense-panel-header"><h3 class="expense-panel-title">'+MONTHS[selectedMonth]+' 2026</h3><div class="expense-panel-meta">'+mE.length+' event'+(mE.length>1?'s':'')+' · '+fmt(t)+' total</div></div><div class="expense-list">'+mE.map((e,idx)=>{const eid=selectedMonth+'-'+idx;const isO=expandedExpense===eid;return '<article class="expense-card '+(isO?'expanded':'')+'" data-eidx="'+eid+'"><div class="expense-top"><div class="expense-left"><div class="expense-icon '+e.category+'">'+(ICONS[e.category]||ICONS.misc)+'</div><div><div class="expense-desc">'+e.description+' <span class="fund-tag '+sourceClass(e.source)+'">'+sourceLabel(e.source)+'</span></div><div class="expense-meta-line">'+e.teamLead.split(' ')[0]+' · '+e.attendees.length+' attendees · '+(e.date||MONTHS_SHORT[e.month])+'</div></div></div><div class="expense-amount-block"><div><div class="expense-amount">'+fmt(e.amount)+'</div><div class="expense-perhead">'+fmt(e.perHead)+' / head</div></div><div class="chevron '+(isO?'open':'')+'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div></div></div><div class="expense-details '+(isO?'show':'')+'"><div class="detail-summary"><span><strong>'+e.attendees.length+'</strong> people</span><span><strong>'+fmt(e.perHead)+'</strong> per head</span><span>Led by <strong>'+e.teamLead.split(' ')[0]+'</strong></span></div><div class="detail-attendees">'+e.attendees.map(a=>'<div class="attendee-chip"><span class="attendee-name">'+a+'</span><span class="attendee-cost">'+fmt(e.perHead)+'</span></div>').join('')+'</div></div></article>';}).join('')+'</div></div></section>';}
-  }else if(expenses.length>0){const sorted=[...expenses].sort((a,b)=>(a.month-b.month)||((a.date||'')>(b.date||'')?1:-1));let rTE=TEAM_EVENTS_TOTAL();let rC=CONN_TOTAL();
-    h+='<section class="expense-panel"><div class="dashboard-card" style="padding:0;overflow:hidden;"><div style="padding:var(--sp-16) var(--sp-24) var(--sp-8);"><h3 class="expense-panel-title">Transaction Ledger</h3></div><div class="ledger-header"><div style="width:72px">Date</div><div style="flex:1">Description</div><div style="min-width:80px;text-align:right">Amount</div><div style="min-width:96px;text-align:right">Balance</div></div>'+sorted.map(e=>{const isC=e.source==='connectivity';if(isC)rC-=e.amount;else rTE-=e.amount;const bal=isC?rC:rTE;return '<div class="ledger-row"><div class="ledger-date">'+(e.date||MONTHS_SHORT[e.month])+'</div><div class="ledger-desc"><div>'+e.description+'<span class="ledger-type debit">'+sourceLabel(e.source).split(' ')[0]+'</span></div><div class="ledger-attendees">'+e.attendees.join(', ')+'</div></div><div class="ledger-amount">-'+fmt(e.amount)+'</div><div class="ledger-balance">'+fmt(bal)+'</div></div>';}).join('')+'</div></section>';
-  }else{h+='<section class="expense-panel"><div class="dashboard-card"><div class="empty-state"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><p><strong>No expenses recorded yet</strong></p><p>Click a month above, or use "Add Expense" to start tracking.</p></div></div></section>';}
-  h+='</div>';return h;
+    else{h+='<section class="expense-panel"><div class="dashboard-card"><div class="expense-panel-header"><h3 class="expense-panel-title">'+MONTHS[selectedMonth]+' 2026</h3><div class="expense-panel-meta">'+mE.length+' event'+(mE.length>1?'s':'')+' · '+fmt(t)+' total</div></div><div class="expense-list">'+mE.map((e,idx)=>{
+      const globalIdx=expenses.indexOf(e);
+      const eid=selectedMonth+'-'+idx;const isO=expandedExpense===eid;
+      return '<article class="expense-card '+(isO?'expanded':'')+'" data-eidx="'+eid+'"><div class="expense-top"><div class="expense-left"><div class="expense-icon '+e.category+'">'+(ICONS[e.category]||ICONS.misc)+'</div><div><div class="expense-desc">'+e.description+' <span class="fund-tag '+sourceClass(e.source)+'">'+sourceLabel(e.source)+'</span></div><div class="expense-meta-line">'+e.teamLead.split(' ')[0]+' · '+e.attendees.length+' attendees · '+(e.date||MONTHS_SHORT[e.month])+'</div></div></div><div class="expense-amount-block"><div><div class="expense-amount">'+fmt(e.amount)+'</div><div class="expense-perhead">'+fmt(e.perHead)+' / head</div></div><div class="chevron '+(isO?'open':'')+'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div></div></div><div class="expense-details '+(isO?'show':'')+'"><div class="detail-summary"><span><strong>'+e.attendees.length+'</strong> people</span><span><strong>'+fmt(e.perHead)+'</strong> per head</span><span>Led by <strong>'+e.teamLead.split(' ')[0]+'</strong></span></div><div class="detail-attendees">'+e.attendees.map(a=>'<div class="attendee-chip"><span class="attendee-name">'+a+'</span><span class="attendee-cost">'+fmt(e.perHead)+'</span></div>').join('')+'</div><div style="padding:0 var(--sp-16) var(--sp-12);"><button class="del-btn" data-gidx="'+globalIdx+'"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>Delete Expense</button></div></div></article>';
+    }).join('')+'</div></div></section>';}
+  }
+  return h;
 }
-
-function roadmapNavToMonth(idx){document.getElementById('roadmapOverlay').classList.remove('open');selectedMonth=idx;if(!deepDiveOpen){deepDiveOpen=true;const c=document.getElementById('deepDiveContent');const l=document.getElementById('toggleLabel');c.classList.remove('collapsed');c.style.maxHeight='9999px';l.textContent='Hide';document.getElementById('deepDiveToggle').setAttribute('aria-expanded','true');}render();setTimeout(()=>{const dh=document.getElementById('deepDiveHeader');if(dh)dh.scrollIntoView({behavior:'smooth',block:'start'});},120);}
-function renderRoadmap(){
-  var now=new Date();var curMonth=now.getMonth();
-  var gt=expenses.reduce(function(s,e){return s+e.amount;},0);
-  var evtCount=expenses.length;
-  var monthSet={};expenses.forEach(function(e){monthSet[e.month]=true;});
-  var monthsWithEvents=Object.keys(monthSet).length;
-  document.getElementById('roadmapTotalLabel').textContent='Total spent: '+fmt(gt)+' of '+fmt(GRAND_TOTAL());
-
-  var mData=MONTHS.map(function(m,i){
-    var mE=monthExpenses(i);var mT=mE.reduce(function(s,e){return s+e.amount;},0);
-    var isPast=i<curMonth;var isCur=i===curMonth;var isFuture=i>curMonth;
-    return {name:m,abbr:MONTHS_SHORT[i],idx:i,events:mE,total:mT,isPast:isPast,isCur:isCur,isFuture:isFuture,hasEvents:mE.length>0};
-  });
-
-  var html='<div class="road-summary">';
-  html+='<div class="road-summary-stat"><span class="road-summary-label">Total Budget</span><span class="road-summary-value">'+fmt(GRAND_TOTAL())+'</span></div>';
-  html+='<div class="road-summary-divider"></div>';
-  html+='<div class="road-summary-stat"><span class="road-summary-label">Total Spent</span><span class="road-summary-value" style="color:var(--red)">'+fmt(gt)+'</span><span class="road-summary-sub">'+pct(gt,GRAND_TOTAL())+'% utilised</span></div>';
-  html+='<div class="road-summary-divider"></div>';
-  html+='<div class="road-summary-stat"><span class="road-summary-label">Remaining</span><span class="road-summary-value" style="color:var(--accent)">'+fmt(GRAND_TOTAL()-gt)+'</span></div>';
-  html+='<div class="road-summary-divider"></div>';
-  html+='<div class="road-summary-stat"><span class="road-summary-label">Events</span><span class="road-summary-value">'+evtCount+'</span><span class="road-summary-sub">across '+monthsWithEvents+' months</span></div>';
-  html+='</div>';
-
-  var rows=[];
-  for(var r=0;r<12;r+=6){rows.push(mData.slice(r,r+6));}
-
-  html+='<div class="road-timeline">';
-  rows.forEach(function(row,ri){
-    var isReverse=ri%2===1;
-    var displayRow=isReverse?row.slice().reverse():row;
-
-    html+='<div class="road-row'+(isReverse?' reverse':'')+'">';
-    html+='<div class="road-line-segment"></div>';
-
-    displayRow.forEach(function(md){
-      var cc='road-circle';
-      if(md.isCur) cc+=' current';
-      else if(md.isPast&&md.hasEvents) cc+=' past-has has-events';
-      else if(md.isPast) cc+=' past-empty';
-      else if(md.isFuture&&md.hasEvents) cc+=' has-events';
-      else if(md.isFuture) cc+=' future';
-      else if(md.hasEvents) cc+=' has-events';
-
-      html+='<div class="road-node"'+(md.hasEvents?' onclick="roadmapNavToMonth('+md.idx+')" style="cursor:pointer;" title="View '+md.name+' expenses"':'')+'>'; 
-      html+='<div class="'+cc+'">';
-      html+='<span class="road-month-abbr">'+md.abbr+'</span>';
-      html+='<span class="road-month-num">'+(md.idx<9?'0':'')+(md.idx+1)+'</span>';
-      html+='</div>';
-
-      html+='<div class="road-info">';
-      if(md.total>0){
-        html+='<div class="road-info-total">'+fmt(md.total)+'</div>';
-      }
-      if(md.events.length>0){
-        html+='<div class="road-info-card">';
-        md.events.forEach(function(e){
-          var srcClass=({team:'team',common:'common',connectivity:'connectivity'})[e.source]||'team';
-          var srcShort=({team:'TL',common:'COM',connectivity:'CONN'})[e.source]||'';
-          html+='<div class="road-info-event">';
-          html+='<div class="road-info-event-name">'+e.description+'<span class="road-info-badge '+srcClass+'">'+srcShort+'</span></div>';
-          html+='<div class="road-info-event-meta">'+e.teamLead.split(' ')[0]+' &middot; '+e.attendees.length+' pax</div>';
-          html+='</div>';
-        });
-        html+='</div>';
-      } else {
-        var label=md.isPast?'No events':md.isCur?'Plan something':'Upcoming';
-        html+='<div class="road-info-empty">'+label+'</div>';
-      }
-      html+='</div>';
-      html+='</div>';
-    });
-
-    html+='</div>';
-
-    if(ri<rows.length-1){
-      var bendSide=isReverse?'left':'right';
-      html+='<div style="height:48px;position:relative;max-width:1100px;margin:0 auto;">';
-      html+='<svg width="100%" height="48" preserveAspectRatio="none" style="overflow:visible;">';
-      if(bendSide==='right'){
-        html+='<path d="M 85% 0 C 95% 0, 95% 48, 85% 48" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="12 8" stroke-linecap="round"/>';
-      } else {
-        html+='<path d="M 15% 0 C 5% 0, 5% 48, 15% 48" stroke="#cbd5e1" stroke-width="4" fill="none" stroke-dasharray="12 8" stroke-linecap="round"/>';
-      }
-      html+='</svg></div>';
-    }
-  });
-
-  html+='</div>';
-  document.getElementById('roadmapBody').innerHTML=html;
-}
-
 
 function handleSearch(q){const box=document.getElementById('searchResults');if(!box)return;if(!q||q.length<2){box.innerHTML='';return;}const lq=q.toLowerCase();const hits=ALL_PEOPLE.filter(p=>p.name.toLowerCase().includes(lq)).slice(0,12);
   if(!hits.length){box.innerHTML='<div class="dashboard-card"><div style="padding:var(--sp-16);text-align:center;color:var(--muted);font-size:13px;">No matches found</div></div>';return;}
-  box.innerHTML='<div class="dashboard-card" style="padding:0;overflow:hidden;">'+hits.map(p=>{const tlN=p.teamLead?p.teamLead.split(' ')[0]:'—';const cBal=personConnBalance(p.name);const cSpent=personConnSpent(p.name);const uTL=p.role==='BPS'?p.teamLead:(p.role==='Team Lead'?p.name:null);const uTLSpent=uTL?tlSpent(uTL):null;const uBal=uTL?(tlBudgetPerTL-uTLSpent):null;const pTeamSpent=personTeamSpent(p.name);let row='<div class="result-item">';row+='<div><div class="result-name">'+p.name+'</div>';row+='<div class="result-role">'+p.role+(p.role==='BPS'?' · '+tlN+"'s team":'')+'</div></div>';row+='<div class="result-budgets">';if(uBal!==null){row+='<div class="result-budget result-budget-pair">';row+='<div class="result-budget-label">Team Budget</div>';row+='<div class="result-budget-value remaining">'+fmt(uBal)+'</div>';if(pTeamSpent>0)row+='<div class="result-budget-value spent" style="font-size:11px;font-weight:600;">-'+fmt(pTeamSpent)+' used</div>';row+='</div>';}row+='<div class="result-budget result-budget-pair">';row+='<div class="result-budget-label">Connectivity</div>';row+='<div class="result-budget-value remaining">'+fmt(cBal)+'</div>';if(cSpent>0)row+='<div class="result-budget-value spent" style="font-size:11px;font-weight:600;">-'+fmt(cSpent)+' used</div>';row+='</div>';row+='</div></div>';return row;}).join('')+'</div>';
+  box.innerHTML='<div class="dashboard-card" style="padding:0;overflow:hidden;">'+hits.map(p=>{
+    const tlN=p.teamLead?p.teamLead.split(' ')[0]:'—';
+    const cBal=personConnBalance(p.name);
+    const uTL=p.role==='BPS'?p.teamLead:(p.role==='Team Lead'?p.name:null);
+    const uBal=uTL?(tlBudgetPerTL-tlSpent(uTL)):null;
+    const xRec=exitRecord(p.name);
+    const pTeamBudget=personProratedTeamBudget(p.name);
+    const pTeamSpent=personTeamSpent(p.name);
+    const exitBadge=xRec?'<span class="exit-badge"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Exited '+MONTHS_SHORT[xRec.lastMonth]+'</span>':'';
+    return '<div class="result-item"><div><div class="result-name">'+p.name+exitBadge+'</div><div class="result-role">'+p.role+(p.role==='BPS'?" · "+tlN+"'s team":'')+(xRec?' · Last day: '+xRec.lastDay.split('T')[0]:'')+'</div></div><div class="result-budgets">'+(uBal!==null?'<div class="result-budget result-budget-pair"><div class="result-budget-label">Team Budget</div><div class="result-budget-value remaining">'+fmt(uBal)+'</div>'+(xRec?'<div class="result-budget-value" style="font-size:11px;color:#b91c1c;font-weight:600;">'+activeMonths(p.name)+' mo × ₹1k prorated</div>':'')+'</div>':'')+'<div class="result-budget result-budget-pair"><div class="result-budget-label">Connectivity</div><div class="result-budget-value '+(cBal===CONN_PER_HEAD_INR()?'full':'remaining')+'">'+fmt(cBal)+'</div></div></div></div>';
+  }).join('')+'</div>';
 }
 
 function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 
-const walletPanel=document.getElementById('walletPanel');const deepDiveContent=document.getElementById('deepDiveContent');
-function render(){walletPanel.innerHTML=renderWallet();deepDiveContent.innerHTML=renderDeepDive();bindWallet();bindDeepDive();}
+const walletPanel=document.getElementById('walletPanel');
+function render(){walletPanel.innerHTML=renderWallet();bindWallet();if(document.getElementById('quickViewOverlay').classList.contains('open')){refreshQuickView();}}
 function bindWallet(){const si=document.getElementById('personSearch');if(si)si.addEventListener('input',e=>handleSearch(e.target.value));}
-function bindDeepDive(){document.querySelectorAll('.cal-cell:not(.future)').forEach(el=>{el.addEventListener('click',()=>{const m=parseInt(el.dataset.month);selectedMonth=selectedMonth===m?null:m;expandedExpense=null;render();});});document.querySelectorAll('.expense-card').forEach(el=>{el.addEventListener('click',()=>{const eid=el.dataset.eidx;expandedExpense=expandedExpense===eid?null:eid;render();});});}
+function openQuickView(){document.getElementById('quickViewOverlay').classList.add('open');refreshQuickView();}
+function refreshQuickView(){document.getElementById('deepDiveBody').innerHTML=renderDeepDive();bindDeepDive();}
+function bindDeepDive(){
+  document.querySelectorAll('#deepDiveBody .cal-cell:not(.future)').forEach(el=>{el.addEventListener('click',()=>{const m=parseInt(el.dataset.month);selectedMonth=selectedMonth===m?null:m;expandedExpense=null;refreshQuickView();});});
+  document.querySelectorAll('#deepDiveBody .expense-card').forEach(el=>{el.addEventListener('click',e=>{if(e.target.closest('.del-btn'))return;const eid=el.dataset.eidx;expandedExpense=expandedExpense===eid?null:eid;refreshQuickView();});});
+  document.querySelectorAll('#deepDiveBody .del-btn').forEach(el=>{el.addEventListener('click',e=>{e.stopPropagation();const gi=parseInt(el.dataset.gidx);deleteExpense(gi);});});
+}
+function deleteExpense(gi){if(gi<0||gi>=expenses.length)return;const e=expenses[gi];const name=e.description;expenses.splice(gi,1);expandedExpense=null;refreshQuickView();render();showToast(name+' deleted — budget restored');}
 
-document.getElementById('deepDiveToggle').addEventListener('click',()=>{deepDiveOpen=!deepDiveOpen;const c=document.getElementById('deepDiveContent');const l=document.getElementById('toggleLabel');if(deepDiveOpen){c.classList.remove('collapsed');c.style.maxHeight='9999px';l.textContent='Hide';}else{c.classList.add('collapsed');c.style.maxHeight='0';l.textContent='Show';}document.getElementById('deepDiveToggle').setAttribute('aria-expanded',deepDiveOpen);});
-
-document.getElementById('roadmapBtn').addEventListener('click',()=>{document.getElementById('roadmapOverlay').classList.add('open');renderRoadmap();});
-document.getElementById('closeRoadmap').addEventListener('click',()=>{document.getElementById('roadmapOverlay').classList.remove('open');});
+document.getElementById('closeQuickView').addEventListener('click',()=>{document.getElementById('quickViewOverlay').classList.remove('open');selectedMonth=null;expandedExpense=null;});
+document.getElementById('roadmapBtn').addEventListener('click',openQuickView);
 
 const settingsPanel=document.getElementById('settingsPanel');const settingsBackdrop=document.getElementById('settingsBackdrop');
 function openSettings(){settingsPanel.classList.add('open');settingsBackdrop.classList.add('open');document.getElementById('sTLBudget').value=tlBudgetPerTL;document.getElementById('sCommonBudget').value=commonBudget;document.getElementById('sUSD').value=connUSDPerHead;document.getElementById('sRate').value=exchangeRate;updateSettingsComputed();}
@@ -562,19 +565,186 @@ document.getElementById('settingsBtn').addEventListener('click',openSettings);do
 
 const modal=document.getElementById('addModal');const fTL=document.getElementById('fTeamLead');const fCustom=document.getElementById('fCustomSection');const fList=document.getElementById('fAttendeeList');
 TL_NAMES.forEach(tl=>{const o=document.createElement('option');o.value=tl;o.textContent=tl.split(' ')[0]+' ('+teamSize(tl)+' pax)';fTL.appendChild(o);});
-document.getElementById('addExpenseBtn').addEventListener('click',()=>{modal.classList.add('open');updateHC();});document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('open'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
-function updateHC(){const tl=fTL.value;const src=document.getElementById('fSource').value;const incMgr=document.getElementById('fIncludeManager').checked;const custom=document.getElementById('fCustomMembers').checked;if(!custom){if(src==='common'){document.getElementById('fHeadcount').value=TOTAL_HC;}else{document.getElementById('fHeadcount').value=teamSize(tl)+(incMgr?1:0);}}}
-fTL.addEventListener('change',()=>{updateHC();updateList();});document.getElementById('fSource').addEventListener('change',()=>{updateHC();updateList();});document.getElementById('fIncludeManager').addEventListener('change',updateHC);
-document.getElementById('fCustomMembers').addEventListener('change',e=>{fCustom.style.display=e.target.checked?'block':'none';updateList();updateHC();});
-function updateList(){const tl=fTL.value;const src=document.getElementById('fSource').value;let members;if(src==='common'){members=[MANAGER,...TL_NAMES,...ALL_BPS];}else{members=[tl,...TEAMS[tl]];}fList.innerHTML=members.map(m=>'<label class="form-check" style="margin-bottom:var(--sp-4)"><input type="checkbox" class="att-check" value="'+m+'" checked/> '+m+'</label>').join('');document.querySelectorAll('.att-check').forEach(cb=>{cb.addEventListener('change',()=>{document.getElementById('fHeadcount').value=document.querySelectorAll('.att-check:checked').length;});});}
+document.getElementById('addExpenseBtn').addEventListener('click',()=>{
+  modal.classList.add('open');
+  selectedAttendees=new Set();
+  if(attSearch)attSearch.value='';
+  document.getElementById('fCustomMembers').checked=false;
+  fCustom.style.display='none';
+  document.getElementById('fDesc').value='';
+  document.getElementById('fDesc').dataset.userEdited='';
+  updateHC();updateList();
+});document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('open'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+function updateHC(){
+  const tl=fTL.value;const src=document.getElementById('fSource').value;
+  const incMgr=document.getElementById('fIncludeManager').checked;
+  const custom=document.getElementById('fCustomMembers').checked;
+  if(custom){
+    // Include manager toggle adds/removes from Set immediately
+    if(incMgr&&!selectedAttendees.has(MANAGER))selectedAttendees.add(MANAGER);
+    syncHeadcount();
+  } else {
+    document.getElementById('fHeadcount').value=src==='connectivity'?TOTAL_HC:(teamSize(tl)+(incMgr?1:0));
+  }
+}
+fTL.addEventListener('change',()=>{
+  updateHC();
+  if(document.getElementById('fCustomMembers').checked){resetSelectedAttendees();updateList();}
+  else{updateList();}
+  autoFillDesc();
+});
+function autoFillDesc(){}  // no auto-fill; user types freely
+document.getElementById('fCategory').addEventListener('change',autoFillDesc);
+document.getElementById('fDesc').addEventListener('input',function(){this.dataset.userEdited=this.value?'1':'';});document.getElementById('fSource').addEventListener('change',()=>{
+  updateHC();
+  if(document.getElementById('fCustomMembers').checked){resetSelectedAttendees();updateList();}
+  else{updateList();}
+});document.getElementById('fIncludeManager').addEventListener('change',e=>{
+  if(document.getElementById('fCustomMembers').checked){
+    if(e.target.checked)selectedAttendees.add(MANAGER);
+    else selectedAttendees.delete(MANAGER);
+    syncHeadcount();
+    updateList(attSearch?attSearch.value:'');
+  } else {updateHC();}
+});
+document.getElementById('fCustomMembers').addEventListener('change',e=>{
+  fCustom.style.display=e.target.checked?'block':'none';
+  if(e.target.checked){
+    if(attSearch)attSearch.value='';
+    resetSelectedAttendees();
+    updateList();
+  }
+  updateHC();
+});
+// ── PERSISTENT ATTENDEE SELECTION ──────────────────────────────────
+// selectedAttendees persists selections across search re-renders
+let selectedAttendees=new Set();
+
+function syncHeadcount(){
+  document.getElementById('fHeadcount').value=selectedAttendees.size;
+}
+
+function updateList(filterQ){
+  const tl=fTL.value;const src=document.getElementById('fSource').value;
+  const ALL_POOL=[...new Set([MANAGER,...TL_NAMES,...ALL_BPS])];
+  const unitMembers=src==='connectivity'?ALL_POOL:[tl,...TEAMS[tl]];
+  const q=(filterQ||'').toLowerCase().trim();
+  // Shown list: filtered if searching, otherwise unit members
+  const shown=q?ALL_POOL.filter(n=>n.toLowerCase().includes(q)):unitMembers;
+  fList.innerHTML=shown.map(m=>{
+    const checked=selectedAttendees.has(m);
+    return '<label class="form-check" style="margin-bottom:var(--sp-4)"><input type="checkbox" class="att-check" value="'+m+'" '+(checked?'checked':'')+'/> '+m+'</label>';
+  }).join('');
+  document.querySelectorAll('.att-check').forEach(cb=>{
+    cb.addEventListener('change',()=>{
+      if(cb.checked)selectedAttendees.add(cb.value);
+      else selectedAttendees.delete(cb.value);
+      syncHeadcount();
+    });
+  });
+}
+
+// Seed selectedAttendees with unit members when unit or source changes
+function resetSelectedAttendees(){
+  const tl=fTL.value;const src=document.getElementById('fSource').value;
+  const ALL_POOL=[...new Set([MANAGER,...TL_NAMES,...ALL_BPS])];
+  selectedAttendees=new Set(src==='connectivity'?ALL_POOL:[tl,...TEAMS[tl]]);
+  syncHeadcount();
+}
+
+// Attendee search: filter visible list but preserve checked state
+const attSearch=document.getElementById('attSearch');
+if(attSearch)attSearch.addEventListener('input',()=>updateList(attSearch.value));
+
+// All toggle: check/uncheck currently VISIBLE rows, persist in Set
+const attAllToggle=document.getElementById('attAllToggle');
+if(attAllToggle)attAllToggle.addEventListener('click',()=>{
+  const boxes=document.querySelectorAll('.att-check');
+  const allChecked=[...boxes].every(b=>b.checked);
+  boxes.forEach(b=>{
+    b.checked=!allChecked;
+    if(!allChecked)selectedAttendees.add(b.value);
+    else selectedAttendees.delete(b.value);
+  });
+  syncHeadcount();
+});
 
 document.getElementById('fSubmit').addEventListener('click',()=>{document.querySelectorAll('.form-input.error').forEach(el=>el.classList.remove('error'));document.querySelectorAll('.form-error-msg.show').forEach(el=>el.classList.remove('show'));const desc=document.getElementById('fDesc').value.trim();const amount=parseFloat(document.getElementById('fAmount').value)||0;let hasError=false;if(!desc){document.getElementById('fDesc').classList.add('error');document.getElementById('fDescErr').classList.add('show');hasError=true;}if(amount<=0){document.getElementById('fAmount').classList.add('error');document.getElementById('fAmountErr').classList.add('show');hasError=true;}if(hasError)return;
   const tl=fTL.value;const category=document.getElementById('fCategory').value;const month=parseInt(document.getElementById('fMonth').value);const date=document.getElementById('fDate').value;const source=document.getElementById('fSource').value;const incMgr=document.getElementById('fIncludeManager').checked;const custom=document.getElementById('fCustomMembers').checked;
-  let attendees;if(custom){attendees=[...document.querySelectorAll('.att-check:checked')].map(c=>c.value);}else if(source==='common'){attendees=[MANAGER,...TL_NAMES,...ALL_BPS];}else{attendees=[tl,...TEAMS[tl]];}if(incMgr&&!attendees.includes(MANAGER))attendees.push(MANAGER);
+  let attendees;if(custom){attendees=[...selectedAttendees];}else if(source==='connectivity'){attendees=[MANAGER,...TL_NAMES,...ALL_BPS];}else{attendees=[tl,...TEAMS[tl]];}if(!custom&&incMgr&&!attendees.includes(MANAGER))attendees.push(MANAGER);
   const perHead=Math.round((amount/attendees.length)*100)/100;expenses.push({description:desc,teamLead:tl,category,amount,month,date:date||null,source,attendees,headcount:attendees.length,perHead});
   document.getElementById('fDesc').value='';document.getElementById('fAmount').value='';document.getElementById('fDate').value='';document.getElementById('fIncludeManager').checked=false;document.getElementById('fCustomMembers').checked=false;fCustom.style.display='none';modal.classList.remove('open');showToast('Expense recorded successfully');render();});
 ['fDesc','fAmount'].forEach(id=>{document.getElementById(id).addEventListener('input',()=>{document.getElementById(id).classList.remove('error');document.getElementById(id+'Err').classList.remove('show');});});
 document.getElementById('fMonth').value=new Date().getMonth();
+
+// ── EXIT MODAL ────────────────────────────────────────────────────
+const exitModal=document.getElementById('exitModal');
+const exitNameInput=document.getElementById('exitNameInput');
+const exitNameHidden=document.getElementById('exitNameHidden');
+const exitSuggestions=document.getElementById('exitSuggestions');
+const exitPreview=document.getElementById('exitPreview');
+
+function openExitModal(){
+  exitModal.classList.add('open');
+  exitNameInput.value='';exitNameHidden.value='';exitSuggestions.style.display='none';
+  document.getElementById('exitDateInput').value='';
+  exitPreview.style.display='none';
+  // Show existing exits
+  const ecl=document.getElementById('exitCurrentList');
+  if(exits.length>0){
+    ecl.style.display='block';
+    ecl.innerHTML='<div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.3px;margin-bottom:var(--sp-8);">Currently Exited ('+exits.length+')</div>'+
+      exits.map((x,i)=>'<div style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-8) var(--sp-12);background:var(--line-light);border-radius:var(--radius-sm);margin-bottom:var(--sp-4);font-size:13px;"><span><strong>'+x.name+'</strong> <span style="color:var(--muted);">· last day '+x.lastDay+'</span></span><button onclick="removeExit('+i+')" style="background:none;border:none;color:var(--red);font-size:12px;font-weight:700;cursor:pointer;padding:2px 6px;border-radius:4px;" title="Remove exit">Remove</button></div>').join('');
+  }else{ecl.style.display='none';}
+}
+document.getElementById('exitBtn').addEventListener('click',openExitModal);
+document.getElementById('closeExitModal').addEventListener('click',()=>exitModal.classList.remove('open'));
+exitModal.addEventListener('click',e=>{if(e.target===exitModal)exitModal.classList.remove('open');});
+
+function removeExit(idx){exits.splice(idx,1);openExitModal();render();}
+
+exitNameInput.addEventListener('input',()=>{
+  const q=exitNameInput.value.trim().toLowerCase();
+  exitNameHidden.value='';exitPreview.style.display='none';
+  if(q.length<1){exitSuggestions.style.display='none';return;}
+  const matches=ALL_PEOPLE.filter(p=>p.name.toLowerCase().includes(q)&&!isExited(p.name)).slice(0,8);
+  if(!matches.length){exitSuggestions.style.display='none';return;}
+  exitSuggestions.style.display='block';
+  exitSuggestions.innerHTML=matches.map(p=>'<div class="exit-suggestion-item" data-name="'+p.name+'"><span>'+p.name+'</span><span class="exit-suggestion-role">'+p.role+(p.teamLead&&p.role==='BPS'?' · '+p.teamLead.split(' ')[0]:'')+'</span></div>').join('');
+  exitSuggestions.querySelectorAll('.exit-suggestion-item').forEach(el=>{
+    el.addEventListener('click',()=>{
+      exitNameInput.value=el.dataset.name;exitNameHidden.value=el.dataset.name;
+      exitSuggestions.style.display='none';updateExitPreview();
+    });
+  });
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.exit-typeahead'))exitSuggestions.style.display='none';});
+
+document.getElementById('exitDateInput').addEventListener('change',updateExitPreview);
+function updateExitPreview(){
+  const name=exitNameHidden.value;const dt=document.getElementById('exitDateInput').value;
+  if(!name||!dt){exitPreview.style.display='none';return;}
+  const d=new Date(dt);const lm=d.getMonth();
+  const activeM=lm-FY_START_MONTH+1;
+  const pBudget=MONTHLY_TEAM_RATE*Math.max(1,activeM);
+  exitPreview.style.display='block';
+  exitPreview.innerHTML='<strong>'+name+'</strong> · Last working month: <strong>'+MONTHS[lm]+'</strong><br>'+
+    '<span style="color:var(--muted);">Team budget adjusted: ₹1,000 × '+Math.max(1,activeM)+' months = <strong style="color:var(--ink);">'+fmt(pBudget)+'</strong> <span style="color:#b91c1c;font-size:11px;">(₹'+((FY_TOTAL_MONTHS-Math.max(1,activeM))*MONTHLY_TEAM_RATE).toLocaleString("en-IN")+' returned to pool)</span></span><br>'+
+    '<span style="color:var(--muted);">Connectivity: <strong style="color:#b91c1c;">'+fmt(CONN_PER_HEAD_INR())+' removed</strong> from connectivity total (not eligible for the year)</span>';
+}
+
+document.getElementById('exitSubmit').addEventListener('click',()=>{
+  const name=exitNameHidden.value;const dt=document.getElementById('exitDateInput').value;
+  document.getElementById('exitDateErr').classList.remove('show');
+  if(!name){exitNameInput.focus();return;}
+  if(!dt){document.getElementById('exitDateErr').classList.add('show');return;}
+  const d=new Date(dt);const lm=d.getMonth();
+  exits.push({name,lastDay:dt,lastMonth:lm});
+  exitModal.classList.remove('open');
+  showToast(name.split(' ')[0]+' attrition logged · Last active month: '+MONTHS[lm]);
+  render();
+});
+
 render();updateList();
 })();
 </script>
