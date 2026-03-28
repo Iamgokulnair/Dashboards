@@ -319,7 +319,7 @@
   <div class="modal-dialog" style="width:min(460px,90vw);">
     <div class="modal-header"><h2 class="modal-title" id="exitModalTitle">Track Attrition</h2><button class="modal-close" id="closeExitModal">Close</button></div>
     <div class="modal-body">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:var(--sp-16);">Monthly team budget (&#8377;1,000/month) stops after their last working month. Connectivity budget (full $${connUSDPerHead}) remains allocated as a lump sum.</p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:var(--sp-16);">Monthly team budget (&#8377;1,000/month) stops after their last working month. Connectivity budget is removed in full — the person is treated as never eligible for the year.</p>
       <div class="form-group exit-typeahead">
         <label class="form-label" for="exitNameInput">Colleague Name</label>
         <input class="form-input" id="exitNameInput" type="text" placeholder="Start typing a name..." autocomplete="off"/>
@@ -482,12 +482,12 @@ async function loadFromDB(){
     sb.from('expenses').select('*').order('month').order('created_at'),
     sb.from('attrition').select('*').order('created_at')
   ]);
-  if(expRes.error){console.error('Load expenses error:',expRes.error);}
+  if(expRes.error){console.error('Load expenses error:',expRes.error);setSyncState('err');}
   else{expenses=expRes.data.map(rowToExpense);}
-  if(attRes.error){console.error('Load attrition error:',attRes.error);}
+  if(attRes.error){console.error('Load attrition error:',attRes.error);setSyncState('err');}
   else{exits=attRes.data.map(rowToExit);}
   document.getElementById('loadingOverlay').style.display='none';
-  setSyncState('ok');
+  if(!expRes.error&&!attRes.error)setSyncState('ok');
   render();
 }
 
@@ -539,6 +539,7 @@ function connSpent(){return expenses.filter(e=>e.source==='connectivity').reduce
 function totalSpent(src){return expenses.filter(e=>src?e.source===src:true).reduce((s,e)=>s+e.amount,0);}
 function personConnSpent(name){let t=0;expenses.forEach(e=>{if(e.source!=='connectivity')return;if(e.attendees.includes(name))t+=e.perHead;});return t;}
 function personConnBalance(name){if(isExited(name))return 0;return CONN_PER_HEAD_INR()-personConnSpent(name);}
+function personTeamSpent(name){let t=0;expenses.forEach(e=>{if(e.source!=='team')return;if(e.attendees&&e.attendees.includes(name))t+=e.perHead;});return Math.round(t);}
 const ICONS={lunch:'<svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',workshop:'<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',outing:'<svg viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',misc:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>'};
 function sourceLabel(s){return{team:'TL Team Connect',common:'Common / Managerial',connectivity:'Connectivity'}[s]||s;}
 function sourceClass(s){return{team:'team',common:'common',connectivity:'conn'}[s]||'team';}
