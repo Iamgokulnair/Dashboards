@@ -439,7 +439,7 @@ async function loadFromDB(){
   if(attRes.error){console.error('Load attrition error:',attRes.error);setSyncState('err');}
   else{exits=attRes.data.map(rowToExit);}
   document.getElementById('loadingOverlay').style.display='none';
-  if(!setRes.error&&setRes.data){const s=setRes.data;if(s.tl_budget_per_tl)tlBudgetPerTL=s.tl_budget_per_tl;if(s.conn_usd_per_head)connUSDPerHead=s.conn_usd_per_head;if(s.exchange_rate)exchangeRate=parseFloat(s.exchange_rate);}
+  if(!setRes.error&&setRes.data){const s=setRes.data;if(s.tl_budget_per_tl)tlBudgetPerTL=s.tl_budget_per_tl;if(s.conn_usd_per_head)connUSDPerHead=s.conn_usd_per_head;if(s.exchange_rate)exchangeRate=parseFloat(s.exchange_rate);document.getElementById('rateLabel').textContent='$'+connUSDPerHead+' × ₹'+exchangeRate+' rate';}
   if(!expRes.error&&!attRes.error&&!setRes.error)setSyncState('ok');
   render();
 }
