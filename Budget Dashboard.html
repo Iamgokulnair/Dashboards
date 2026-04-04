@@ -421,18 +421,26 @@ async function dbDeleteAttrition(id){
   if(error){console.error('DB attrition delete error:',error);setSyncState('err');return;}
   setSyncState('ok');
 }
+async function dbSaveSettings(){
+  setSyncState('saving');
+  const{error}=await sb.from('settings').upsert({id:'1',tl_budget_per_tl:tlBudgetPerTL,conn_usd_per_head:connUSDPerHead,exchange_rate:exchangeRate,updated_at:new Date().toISOString()});
+  if(error){console.error('Settings save error:',error);setSyncState('err');}
+  else{setSyncState('ok');}
+}
 async function loadFromDB(){
   document.getElementById('loadingOverlay').style.display='flex';
-  const[expRes,attRes]=await Promise.all([
+  const[expRes,attRes,setRes]=await Promise.all([
     sb.from('expenses').select('*').order('month').order('created_at'),
-    sb.from('attrition').select('*').order('created_at')
+    sb.from('attrition').select('*').order('created_at'),
+    sb.from('settings').select('*').eq('id','1').single()
   ]);
   if(expRes.error){console.error('Load expenses error:',expRes.error);setSyncState('err');}
   else{expenses=expRes.data.map(rowToExpense);}
   if(attRes.error){console.error('Load attrition error:',attRes.error);setSyncState('err');}
   else{exits=attRes.data.map(rowToExit);}
   document.getElementById('loadingOverlay').style.display='none';
-  if(!expRes.error&&!attRes.error)setSyncState('ok');
+  if(!setRes.error&&setRes.data){const s=setRes.data;if(s.tl_budget_per_tl)tlBudgetPerTL=s.tl_budget_per_tl;if(s.conn_usd_per_head)connUSDPerHead=s.conn_usd_per_head;if(s.exchange_rate)exchangeRate=parseFloat(s.exchange_rate);}
+  if(!expRes.error&&!attRes.error&&!setRes.error)setSyncState('ok');
   render();
 }
 
@@ -575,7 +583,7 @@ const settingsPanel=document.getElementById('settingsPanel');const settingsBackd
 function openSettings(){settingsPanel.classList.add('open');settingsBackdrop.classList.add('open');document.getElementById('sTLBudget').value=tlBudgetPerTL;document.getElementById('sCommonBudget').value=commonBudget;document.getElementById('sUSD').value=connUSDPerHead;document.getElementById('sRate').value=exchangeRate;updateSettingsComputed();}
 function closeSettingsPanel(){settingsPanel.classList.remove('open');settingsBackdrop.classList.remove('open');}
 function updateSettingsComputed(){const tl=parseFloat(document.getElementById('sTLBudget').value)||100000;const com=parseFloat(document.getElementById('sCommonBudget').value)||0;const usd=parseFloat(document.getElementById('sUSD').value)||45;const rate=parseFloat(document.getElementById('sRate').value)||87;const cPH=Math.round(usd*rate);const cTot=TOTAL_HC*cPH;const tlTot=5*tl;document.getElementById('scTLTotal').textContent=fmt(tlTot);document.getElementById('scConnPerHead').textContent=fmt(cPH);document.getElementById('scConnTotal').textContent=fmt(cTot);document.getElementById('scGrandTL').textContent=fmt(tlTot);document.getElementById('scGrandCommon').textContent=fmt(com);document.getElementById('scGrandConn').textContent=fmt(cTot);document.getElementById('scGrandTotal').textContent=fmt(tlTot+com+cTot);}
-function applySettings(){tlBudgetPerTL=parseFloat(document.getElementById('sTLBudget').value)||100000;commonBudget=parseFloat(document.getElementById('sCommonBudget').value)||0;connUSDPerHead=parseFloat(document.getElementById('sUSD').value)||45;exchangeRate=parseFloat(document.getElementById('sRate').value)||87;document.getElementById('rateLabel').textContent='$'+connUSDPerHead+' × ₹'+exchangeRate+' rate';closeSettingsPanel();showToast('Settings updated · Grand total: '+fmt(GRAND_TOTAL()));render();}
+function applySettings(){tlBudgetPerTL=parseFloat(document.getElementById('sTLBudget').value)||100000;commonBudget=parseFloat(document.getElementById('sCommonBudget').value)||0;connUSDPerHead=parseFloat(document.getElementById('sUSD').value)||45;exchangeRate=parseFloat(document.getElementById('sRate').value)||87;document.getElementById('rateLabel').textContent='$'+connUSDPerHead+' × ₹'+exchangeRate+' rate';closeSettingsPanel();showToast('Settings updated · Grand total: '+fmt(GRAND_TOTAL()));render();dbSaveSettings();}
 document.getElementById('settingsBtn').addEventListener('click',openSettings);document.getElementById('rateLabel').addEventListener('click',openSettings);document.getElementById('closeSettings').addEventListener('click',applySettings);settingsBackdrop.addEventListener('click',applySettings);
 ['sTLBudget','sCommonBudget','sUSD','sRate'].forEach(id=>{document.getElementById(id).addEventListener('input',updateSettingsComputed);});
 
